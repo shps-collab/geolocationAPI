@@ -13,11 +13,13 @@ import com.maxmind.geoip2.exception.GeoIp2Exception;
 
 @RestController
 public class HomeController {
-
+	//Test Comment
 	@GetMapping("/")
 	public String getCoordinates(HttpServletRequest request, HttpServletResponse response) throws IOException, GeoIp2Exception {
-		GeolocationByIP asdf = new GeolocationByIP();
-		return asdf.getLocation("24.96.73.230").toString();
+		try {
+			return GeolocationByIP.getLocation(request.getRemoteAddr()).toString();
+		}catch(Exception ex) {
+			return "false";
+		}		
 	}
-
 }

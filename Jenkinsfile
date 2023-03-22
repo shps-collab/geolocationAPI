@@ -22,4 +22,16 @@ node {
   //    sh "${mvn}/bin/mvn sonar:sonar"
   //  }
   //}
+  //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
+  stage ('Docker Build') {
+    withMaven {
+      sh "sudo docker build -t geolocationapi ."    
+    }
+  }
+  //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
+  stage ('Docker Run') {
+    withMaven {
+      sh "sudo docker run -p 5001:8080 geolocationapi ."    
+    }
+  }
 }

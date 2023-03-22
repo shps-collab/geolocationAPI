@@ -1,4 +1,5 @@
 node {
+	def app
   //Checks out the git repo before running maven commands
   stage('Source Code Management (SCM)') {
     checkout scm
@@ -24,8 +25,7 @@ node {
   //}
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
   stage ('Docker Build') {    
-    withMaven {
-      sh "docker build -t geolocationapi ."    
+    	app = docker.build("getintodevops/hellonode")
     }
   }
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml

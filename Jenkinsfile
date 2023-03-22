@@ -25,6 +25,7 @@ node {
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
   stage ('Docker Build') {    
     withMaven {
+    	sh "whoami"
       sh "sudo docker build -t geolocationapi ."    
     }
   }

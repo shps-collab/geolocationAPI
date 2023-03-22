@@ -23,24 +23,15 @@ node {
   //  }
   //}
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
-  stage ('Docker Build') {
-  	agent {
-        docker {
-            image 'geolocationapi'
-            // Run the container on the node specified at the
-            // top-level of the Pipeline, in the same workspace,
-            // rather than on a new node entirely:
-            reuseNode true
-        }
-    }
+  stage ('Docker Build') {    
     withMaven {
-      sh "sudo docker build -t geolocationapi ."    
+      sh "docker build -t geolocationapi ."    
     }
   }
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
   stage ('Docker Run') {
     withMaven {
-      sh "sudo docker run -p 5001:8080 geolocationapi ."    
+      sh "docker run -p 5001:8080 geolocationapi ."    
     }
   }
 }

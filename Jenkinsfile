@@ -32,7 +32,7 @@ node {
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
   stage ('Docker Run') {
     withMaven {
-      sh "sudo docker run -p 5001:8080 geolocationapi ."    
+      sh "sudo docker run -p 5000:8080 geolocationapi ."    
     }
   }
 }

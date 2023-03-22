@@ -33,6 +33,8 @@ node {
   stage ('Docker Run') {
     withMaven {
       sh "sudo docker run -p 5000:8080 geolocationapi ."    
+      currentBuild.getRawBuild().getExecutor().interrupt(Result.SUCCESS)
+    sleep(1)   // Interrupt is not blocking and does not take effect immediately.
     }
   }
 }

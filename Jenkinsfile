@@ -27,7 +27,7 @@ node {
   stage ('Docker Build') {    
     	app = docker.build("getintodevops/hellonode")
     }
-  }
+  
   //Maven install -> Builds project, runs tests, and generates .war file based on the parameters in the pom.xml
   stage ('Docker Run') {
     withMaven {

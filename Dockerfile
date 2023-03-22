@@ -1,6 +1,6 @@
 FROM tomcat
 
-COPY ROOT.war /usr/local/tomcat/webapps/
+COPY target/geolocationAPI.war /usr/local/tomcat/webapps/
 
 #FROM openjdk:11
 EXPOSE 8080

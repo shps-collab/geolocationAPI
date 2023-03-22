@@ -13,6 +13,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>geolocationAPI</name>
 	<description>Geolocation of Device from IP Address</description>
+		<packaging>war</packaging>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>

@@ -19,7 +19,8 @@ public class HomeController {
 		try {
 			return GeolocationByIP.getLocation(request.getRemoteAddr()).toString();
 		}catch(Exception ex) {
-			return request.getRemoteAddr().toString();
+			ex.printStackTrace();
+			return ex.getMessage().toString();
 		}		
 	}
 }

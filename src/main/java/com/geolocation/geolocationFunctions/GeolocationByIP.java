@@ -1,8 +1,7 @@
 package com.geolocation.geolocationFunctions;
 
-import java.io.File;
-
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 
 import org.json.JSONObject;
@@ -15,10 +14,10 @@ import com.maxmind.geoip2.model.CityResponse;
 public class GeolocationByIP {
     
 	private static DatabaseReader dbReader;
-    private static File database;
+    private static InputStream database;
     
     public static JSONObject getLocation(String ip) throws IOException, GeoIp2Exception {
-    	database = new ClassPathResource("/databases/GeoLite2-City.mmdb").getFile();
+       	database = new ClassPathResource("/databases/GeoLite2-City.mmdb").getInputStream();
 	    dbReader = new DatabaseReader.Builder(database).build();
         InetAddress ipAddress = InetAddress.getByName(ip);
         CityResponse response = dbReader.city(ipAddress);
